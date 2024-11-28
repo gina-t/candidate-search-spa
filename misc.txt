@@ -1,0 +1,10 @@
+https://api.github.com/search/users?q=microsoft
+
+under Headers
+Key
+Authorization
+Value
+Bearer github_pat_11ADHGFDI0QAY17n0ca0K6_WHPOoksTPqeieL1k8Shs...
+
+under Body
+Pretty
