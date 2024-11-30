@@ -1,14 +1,18 @@
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
-
-import App from './App.tsx';
-import CandidateSearch from './pages/CandidateSearch.tsx';
-import SavedCandidates from './pages/SavedCandidates.tsx';
-import ErrorPage from './pages/ErrorPage.tsx';
-import About from './pages/About.tsx';
-import Contact from './pages/Contact.tsx';
-import Home from './pages/Home.tsx';
+import App from './App';
+import { AcceptedUsersProvider } from './context/AcceptedUsersContext';
+import UserSearchPage from './pages/UserSearchPage';
+import SavedUsersPage from './pages/SavedUsersPage';
+import ErrorPage from './pages/ErrorPage';
+import ProjectsPage from './pages/ProjectsPage';
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
+import HomePage from './pages/HomePage';
+import ProfilePage from './pages/ProfilePage';
+import SignOutPage from './pages/SignOutPage';
 
 const router = createBrowserRouter([
   {
@@ -18,23 +22,35 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <CandidateSearch />,
+        element: <HomePage />,
       },
       {
-        path: '/SavedCandidates',
-        element: <SavedCandidates />,
+        path: 'userSearch',
+        element: <UserSearchPage />,
       },
       {
-        path: '/about',
-        element: <About />,
+        path: 'savedUsers',
+        element: <SavedUsersPage />,
       },
       {
-        path: '/contact',
-        element: <Contact />,
+        path: 'projects',
+        element: <ProjectsPage />,
       },
       {
-        path: '/home',
-        element: <Home />,
+        path: 'about',
+        element: <AboutPage />,
+      },
+      {
+        path: 'contact',
+        element: <ContactPage />,
+      },
+      {
+        path: 'profile',
+        element: <ProfilePage />,
+      },
+      {
+        path: 'signOut',
+        element: <SignOutPage />,
       },
     ],
   },
@@ -42,5 +58,11 @@ const router = createBrowserRouter([
 
 const rootElement = document.getElementById('root');
 if (rootElement) {
-  ReactDOM.createRoot(rootElement).render(<RouterProvider router={router} />);
+  ReactDOM.createRoot(rootElement).render(
+    <React.StrictMode>
+      <AcceptedUsersProvider>
+        <RouterProvider router={router} />
+      </AcceptedUsersProvider>
+    </React.StrictMode>
+  );
 }
