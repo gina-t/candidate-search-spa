@@ -1,42 +1,56 @@
-import React, { useState } from 'react';
-import { User } from '../types';
-import { fetchUsers } from '../services/github';
-import { UserList } from './UserList';
+import React, { useState, useEffect } from 'react';
+import { fetchUsers } from '../api/API';
+import { User } from '../interfaces/UserInterface';
+import { useLocation } from 'react-router-dom'; 
 
-// the UserSearch component is a form that allows users to search for GitHub users by their username
-// it uses the fetchUsers function to fetch the users from the GitHub API and displays the results using the UserList component
-// the loading state is used to disable the search button while the search is in progress
-export const UserSearch: React.FC = () => {
+
+interface UserSearchProps {
+  onSearchResults: (users: User[]) => void;
+}
+
+const UserSearch: React.FC<UserSearchProps> = ({ onSearchResults }) => {
   const [username, setUsername] = useState('');
-  const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const location = useLocation();
 
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUsername(event.target.value);
-  };
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const query = searchParams.get('query');
+    if (query) {
+      setUsername(query);
+      onSearch(query);
+    }
+  }, [location.search]);
 
-  const onSearch = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const onSearch = async (query: string) => {
     setLoading(true);
-
+    setError(null);
     try {
-      const fetchedUsers = await fetchUsers(username);
-      setUsers(fetchedUsers);
+      console.log(`Searching for users with query: ${query}`);
+      const fetchedUsers = await fetchUsers(query);
+      console.log('Fetched users:', fetchedUsers);
+      if (fetchedUsers.length === 0) {
+        setError('No users found');
+      } else {
+        onSearchResults(fetchedUsers);
+      }
     } catch (error) {
-      console.error(error);
+      console.error('Error fetching users:', error);
+      setError('Failed to fetch users');
     }
     setLoading(false);
   };
 
   return (
     <div>
-      <form onSubmit={onSearch}>
-        <input type="text" value={username} onChange={onChange} placeholder="Search for users" />
-        <button type="submit" disabled={loading}>
-          {loading ? 'Searching...' : 'Search'}
-        </button>
-      </form>
-      <UserList users={users} />
+      <div className="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
+        <h3 className="text-lg font-semibold text-gray-900">Search results for {username}</h3>
+      </div>
+      {loading && <p>Loading...</p>}
+      {error && <p>{error}</p>}
     </div>
   );
 };
+
+export default UserSearch;
