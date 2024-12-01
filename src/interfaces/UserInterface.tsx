@@ -9,7 +9,9 @@ export interface User {
   email: string;
   html_url: string;
   company: string;
+  bio: string;
 }
+
 export interface GitHubUserResponse {
   id: number;
   login: string;  
@@ -19,4 +21,6 @@ export interface GitHubUserResponse {
   email: string;
   html_url: string;
   company: string;
+  bio: string;
+  url: string; 
 }

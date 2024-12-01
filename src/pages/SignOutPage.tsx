@@ -1,7 +1,9 @@
-
+import Footer from "../components/Footer";
 const SignOutPage = () => {
   return (
-    <div>Sign Out</div>
+    <div>
+      <Footer />
+    </div>
   )
 }
 

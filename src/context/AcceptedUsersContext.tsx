@@ -4,6 +4,7 @@ import { User } from '../interfaces/UserInterface';
 interface AcceptedUsersContextProps {
   acceptedUsers: User[];
   addAcceptedUser: (user: User) => void;
+  removeAcceptedUser: (userId: number) => void;
 }
 
 const AcceptedUsersContext = createContext<AcceptedUsersContextProps | undefined>(undefined);
@@ -15,8 +16,12 @@ export const AcceptedUsersProvider: React.FC<{ children: ReactNode }> = ({ child
     setAcceptedUsers((prevUsers) => [...prevUsers, user]);
   };
 
+  const removeAcceptedUser = (userId: number) => {
+    setAcceptedUsers((prevUsers) => prevUsers.filter((user) => user.id !== userId));
+  };
+
   return (
-    <AcceptedUsersContext.Provider value={{ acceptedUsers, addAcceptedUser }}>
+    <AcceptedUsersContext.Provider value={{ acceptedUsers, addAcceptedUser, removeAcceptedUser }}>
       {children}
     </AcceptedUsersContext.Provider>
   );
