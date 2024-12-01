@@ -29,19 +29,19 @@ const Navbar: React.FC = () => {
                     Home
                   </Link>
                   <Link
-                    to="userSearch"
+                    to="/userSearch"
                     className="rounded-md px-3 py-2 text-m font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                   >
                     User Search
                   </Link>
                   <Link
-                    to="savedUsers"
+                    to="/savedUsers"
                     className="rounded-md px-3 py-2 text-m font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                   >
                    Saved Users
                   </Link>
                   <Link
-                    to="projects"
+                    to="/projects"
                     className="rounded-md px-3 py-2 text-m font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                   >
                     Projects
@@ -82,7 +82,7 @@ const Navbar: React.FC = () => {
                       <img
                         alt="portrait"
                         src={portrait}
-                        className="w-8 h-10 rounded-full"
+                        className="h-8 w-auto rounded-full"
                       />
                     </MenuButton>
                   </div>
@@ -92,7 +92,7 @@ const Navbar: React.FC = () => {
                   >
                     <MenuItem>
                       <Link
-                        to="profile"
+                        to="/profile"
                         className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
                       >
                         Profile
@@ -100,7 +100,7 @@ const Navbar: React.FC = () => {
                     </MenuItem>
                     <MenuItem>
                       <Link
-                        to="projects"
+                        to="/projects"
                         className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
                       >
                         Projects
@@ -108,7 +108,7 @@ const Navbar: React.FC = () => {
                     </MenuItem>
                     <MenuItem>
                       <Link
-                        to="signOut"
+                        to="/signOut"
                         className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
                         >
                           Sign Out
@@ -133,21 +133,21 @@ const Navbar: React.FC = () => {
             </DisclosureButton>
             <DisclosureButton
             as={Link}
-            to="userSearch"
+            to="/userSearch"
             className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
             >
               User Search
             </DisclosureButton>
             <DisclosureButton
             as={Link}
-            to="savedUsers"
+            to="/savedUsers"
             className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
             >
               Saved Users
             </DisclosureButton>
             <DisclosureButton
               as={Link}
-              to="projects"
+              to="/projects"
               className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
             >
               Projects
@@ -159,7 +159,7 @@ const Navbar: React.FC = () => {
                 <img
                   alt="portrait"
                   src={portrait}
-                  className="size-10 rounded-full"
+                  className="w-12 h-12 rounded-full"
                 />
               </div>
               <div className="ml-3">
@@ -178,21 +178,21 @@ const Navbar: React.FC = () => {
             <div className="mt-3 space-y-1 px-2">
               <DisclosureButton
               as={Link}
-              to="profile"
+              to="/profile"
                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
               >
                 Profile
               </DisclosureButton>
               <DisclosureButton
                 as={Link}
-                to="projects"
+                to="/projects"
                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
               >
                 Projects
               </DisclosureButton>
               <DisclosureButton
                 as={Link}
-                to="signOut"
+                to="/signOut"
                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
               >
                 Sign Out

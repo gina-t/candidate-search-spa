@@ -8,8 +8,6 @@ import UserSearchPage from './pages/UserSearchPage';
 import SavedUsersPage from './pages/SavedUsersPage';
 import ErrorPage from './pages/ErrorPage';
 import ProjectsPage from './pages/ProjectsPage';
-import AboutPage from './pages/AboutPage';
-import ContactPage from './pages/ContactPage';
 import HomePage from './pages/HomePage';
 import ProfilePage from './pages/ProfilePage';
 import SignOutPage from './pages/SignOutPage';
@@ -35,14 +33,6 @@ const router = createBrowserRouter([
       {
         path: 'projects',
         element: <ProjectsPage />,
-      },
-      {
-        path: 'about',
-        element: <AboutPage />,
-      },
-      {
-        path: 'contact',
-        element: <ContactPage />,
       },
       {
         path: 'profile',

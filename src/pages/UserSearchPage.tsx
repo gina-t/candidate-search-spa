@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import UserSearch from '../components/UserSearch';
 import UserCards from '../components/UserCards';
 import { User } from '../interfaces/UserInterface';
+import UserCard from '../components/UserCard';
 
 const UserSearchPage: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -17,7 +18,11 @@ const UserSearchPage: React.FC = () => {
   return (
     <div>
       <UserSearch onSearchResults={handleSearchResults} />
-      <UserCards users={users} removeUser={removeUser} />
+      {users.length === 0 ? (
+        <UserCard />
+      ) : (
+        <UserCards users={users} removeUser={removeUser} />
+      )}
     </div>
   );
 };

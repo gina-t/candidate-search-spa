@@ -3,19 +3,16 @@ import { PlusIcon, MinusIcon } from '@heroicons/react/20/solid';
 import { useNavigate } from 'react-router-dom';
 import { User } from '../interfaces/UserInterface';
 import { useAcceptedUsers } from '../context/AcceptedUsersContext';
+import { placeholderUser } from '../data/placeholderUser';
 
 interface UserCardProps {
-  user: User;
-  removeUser: (userId: number) => void;
+  user?: User;
+  removeUser?: (userId: number) => void;
 }
 
-const UserCard: React.FC<UserCardProps> = ({ user, removeUser }) => {
+const UserCard: React.FC<UserCardProps> = ({ user = placeholderUser, removeUser }) => {
   const { addAcceptedUser } = useAcceptedUsers();
   const navigate = useNavigate();
-
-  if (!user) {
-    return null; // or return a placeholder/loading component
-  }
 
   const handleAccept = () => {
     addAcceptedUser(user);
@@ -23,7 +20,9 @@ const UserCard: React.FC<UserCardProps> = ({ user, removeUser }) => {
   };
 
   const handleReject = () => {
-    removeUser(user.id);
+    if (removeUser) {
+      removeUser(user.id);
+    }
   };
 
   return (
@@ -45,6 +44,7 @@ const UserCard: React.FC<UserCardProps> = ({ user, removeUser }) => {
               <p className='text-sm text-gray-900'>{user.email}</p>
               <a href={user.html_url} className="text-sm text-blue-500 hover:underline">{user.html_url}</a>
               <p className='text-sm text-gray-900'>{user.company}</p>
+              <p className='text-sm text-gray-900'>{user.bio}</p> 
             </div>
           </div>
         </div>
@@ -59,14 +59,16 @@ const UserCard: React.FC<UserCardProps> = ({ user, removeUser }) => {
             <span>Accept</span>
           </button>
           {/* reject button */}
-          <button
-            type="button"
-            onClick={handleReject}
-            className="relative ml-3 inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-          >
-            <MinusIcon aria-hidden="true" className="-ml-0.5 mr-1.5 w-5 h-5 text-gray-400" />
-            <span>Reject</span>
-          </button>
+          {removeUser && (
+            <button
+              type="button"
+              onClick={handleReject}
+              className="relative ml-3 inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+            >
+              <MinusIcon aria-hidden="true" className="-ml-0.5 mr-1.5 w-5 h-5 text-gray-400" />
+              <span>Reject</span>
+            </button>
+          )}
         </div>
       </div>
     </div>
