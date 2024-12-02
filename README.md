@@ -126,19 +126,19 @@ npm run serve
 Screenshots of the app demonstrating functionality:
 
 ### Screenshot 1
-![Screenshot 1](.src/assets/screenshots/screenshot1.png)
+![Screenshot 1](./src/assets/screenshots/screenshot1.png)
 
 ### Screenshot 2
-![Screenshot 2](.src/assets/screenshots/screenshot2.png)
+![Screenshot 2](./src/assets/screenshots/screenshot2.png)
 
 ### Screenshot 3
-![Screenshot 3](.src/assets/screenshots/screenshot3.png)
+![Screenshot 3](./src/assets/screenshots/screenshot3.png)
 
 ### Screenshot 4
-![Screenshot 4](.src/assets/screenshots/screenshot4.png)
+![Screenshot 4](./src/assets/screenshots/screenshot4.png)
 
 ### Screenshot 5
-![Screenshot 5](.src/assets/screenshots/screenshot5.png)
+![Screenshot 5](./src/assets/screenshots/screenshot5.png)
 
 
 ## License
