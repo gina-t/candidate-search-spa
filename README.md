@@ -123,6 +123,9 @@ npm run serve
 
 ## Usage
 
+[
+](https://candidate-search-spa-1.onrender.com)
+
 Screenshots of the app demonstrating functionality:
 
 ### Screenshot 1
